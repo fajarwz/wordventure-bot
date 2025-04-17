@@ -21,7 +21,7 @@ export type Subscriber = $Result.DefaultSelection<Prisma.$SubscriberPayload>
 
 /**
  * ##  Prisma Client ʲˢ
- *
+ * 
  * Type-safe database client for TypeScript & Node.js
  * @example
  * ```
@@ -30,7 +30,7 @@ export type Subscriber = $Result.DefaultSelection<Prisma.$SubscriberPayload>
  * const subscribers = await prisma.subscriber.findMany()
  * ```
  *
- *
+ * 
  * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
  */
 export class PrismaClient<
@@ -42,7 +42,7 @@ export class PrismaClient<
 
     /**
    * ##  Prisma Client ʲˢ
-   *
+   * 
    * Type-safe database client for TypeScript & Node.js
    * @example
    * ```
@@ -51,12 +51,12 @@ export class PrismaClient<
    * const subscribers = await prisma.subscriber.findMany()
    * ```
    *
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
    */
 
   constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
-  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): PrismaClient;
+  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): void;
 
   /**
    * Connect with the database
@@ -81,7 +81,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
@@ -93,7 +93,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'user@email.com')
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
@@ -104,7 +104,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
@@ -116,7 +116,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
@@ -140,9 +140,7 @@ export class PrismaClient<
   $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => $Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<R>
 
 
-  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb<ClientOptions>, ExtArgs, $Utils.Call<Prisma.TypeMapCb<ClientOptions>, {
-    extArgs: ExtArgs
-  }>>
+  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb, ExtArgs>
 
       /**
    * `prisma.subscriber`: Exposes CRUD operations for the **Subscriber** model.
@@ -152,7 +150,7 @@ export class PrismaClient<
     * const subscribers = await prisma.subscriber.findMany()
     * ```
     */
-  get subscriber(): Prisma.SubscriberDelegate<ExtArgs, ClientOptions>;
+  get subscriber(): Prisma.SubscriberDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -173,6 +171,7 @@ export namespace Prisma {
   export import PrismaClientRustPanicError = runtime.PrismaClientRustPanicError
   export import PrismaClientInitializationError = runtime.PrismaClientInitializationError
   export import PrismaClientValidationError = runtime.PrismaClientValidationError
+  export import NotFoundError = runtime.NotFoundError
 
   /**
    * Re-export of sql-template-tag
@@ -193,7 +192,7 @@ export namespace Prisma {
   export type DecimalJsLike = runtime.DecimalJsLike
 
   /**
-   * Metrics
+   * Metrics 
    */
   export type Metrics = runtime.Metrics
   export type Metric<T> = runtime.Metric<T>
@@ -211,14 +210,14 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.6.0
-   * Query Engine version: f676762280b54cd07c770017ed3711ddde35f37a
+   * Prisma Client JS version: 5.22.0
+   * Query Engine version: 605197351a3c8bdd595af2d2a9bc3025bca48ea2
    */
   export type PrismaVersion = {
     client: string
   }
 
-  export const prismaVersion: PrismaVersion
+  export const prismaVersion: PrismaVersion 
 
   /**
    * Utility Types
@@ -234,15 +233,15 @@ export namespace Prisma {
 
   /**
    * Types of the values used to represent different kinds of `null` values when working with JSON fields.
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   namespace NullTypes {
     /**
     * Type of `Prisma.DbNull`.
-    *
+    * 
     * You cannot use other instances of this class. Please use the `Prisma.DbNull` value.
-    *
+    * 
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class DbNull {
@@ -252,9 +251,9 @@ export namespace Prisma {
 
     /**
     * Type of `Prisma.JsonNull`.
-    *
+    * 
     * You cannot use other instances of this class. Please use the `Prisma.JsonNull` value.
-    *
+    * 
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class JsonNull {
@@ -264,9 +263,9 @@ export namespace Prisma {
 
     /**
     * Type of `Prisma.AnyNull`.
-    *
+    * 
     * You cannot use other instances of this class. Please use the `Prisma.AnyNull` value.
-    *
+    * 
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class AnyNull {
@@ -277,21 +276,21 @@ export namespace Prisma {
 
   /**
    * Helper for filtering JSON entries that have `null` on the database (empty on the db)
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const DbNull: NullTypes.DbNull
 
   /**
    * Helper for filtering JSON entries that have JSON `null` values (not empty on the db)
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const JsonNull: NullTypes.JsonNull
 
   /**
    * Helper for filtering JSON entries that are `Prisma.DbNull` or `Prisma.JsonNull`
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const AnyNull: NullTypes.AnyNull
@@ -479,7 +478,7 @@ export namespace Prisma {
   type AtLeast<O extends object, K extends string> = NoExpand<
     O extends unknown
     ? | (K extends keyof O ? { [P in K]: O[P] } & O : O)
-      | {[P in keyof O as P extends K ? P : never]-?: O[P]} & O
+      | {[P in keyof O as P extends K ? K : never]-?: O[P]} & O
     : never>;
 
   type _Strict<U, _U = U> = U extends unknown ? U & OptionalFlat<_Record<Exclude<Keys<_U>, keyof U>, never>> : never;
@@ -603,14 +602,11 @@ export namespace Prisma {
     db?: Datasource
   }
 
-  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
-    returns: Prisma.TypeMap<this['params']['extArgs'], ClientOptions extends { omit: infer OmitOptions } ? OmitOptions : {}>
+  interface TypeMapCb extends $Utils.Fn<{extArgs: $Extensions.InternalArgs, clientOptions: PrismaClientOptions }, $Utils.Record<string, any>> {
+    returns: Prisma.TypeMap<this['params']['extArgs'], this['params']['clientOptions']>
   }
 
-  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> = {
-    globalOmitOptions: {
-      omit: GlobalOmitOptions
-    }
+  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
       modelProps: "subscriber"
       txIsolationLevel: Prisma.TransactionIsolationLevel
@@ -667,10 +663,6 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.SubscriberUpdateManyArgs<ExtArgs>
             result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.SubscriberUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SubscriberPayload>[]
           }
           upsert: {
             args: Prisma.SubscriberUpsertArgs<ExtArgs>
@@ -757,25 +749,8 @@ export namespace Prisma {
       timeout?: number
       isolationLevel?: Prisma.TransactionIsolationLevel
     }
-    /**
-     * Global configuration for omitting model fields by default.
-     * 
-     * @example
-     * ```
-     * const prisma = new PrismaClient({
-     *   omit: {
-     *     user: {
-     *       password: true
-     *     }
-     *   }
-     * })
-     * ```
-     */
-    omit?: Prisma.GlobalOmitConfig
   }
-  export type GlobalOmitConfig = {
-    subscriber?: SubscriberOmit
-  }
+
 
   /* Types for Logging */
   export type LogLevel = 'info' | 'query' | 'warn' | 'error'
@@ -816,7 +791,6 @@ export namespace Prisma {
     | 'createManyAndReturn'
     | 'update'
     | 'updateMany'
-    | 'updateManyAndReturn'
     | 'upsert'
     | 'delete'
     | 'deleteMany'
@@ -1063,19 +1037,12 @@ export namespace Prisma {
     subscribedAt?: boolean
   }, ExtArgs["result"]["subscriber"]>
 
-  export type SubscriberSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    chatId?: boolean
-    subscribedAt?: boolean
-  }, ExtArgs["result"]["subscriber"]>
-
   export type SubscriberSelectScalar = {
     id?: boolean
     chatId?: boolean
     subscribedAt?: boolean
   }
 
-  export type SubscriberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "chatId" | "subscribedAt", ExtArgs["result"]["subscriber"]>
 
   export type $SubscriberPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Subscriber"
@@ -1090,12 +1057,12 @@ export namespace Prisma {
 
   type SubscriberGetPayload<S extends boolean | null | undefined | SubscriberDefaultArgs> = $Result.GetResult<Prisma.$SubscriberPayload, S>
 
-  type SubscriberCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<SubscriberFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type SubscriberCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<SubscriberFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: SubscriberCountAggregateInputType | true
     }
 
-  export interface SubscriberDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface SubscriberDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Subscriber'], meta: { name: 'Subscriber' } }
     /**
      * Find zero or one Subscriber that matches the filter.
@@ -1108,10 +1075,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends SubscriberFindUniqueArgs>(args: SelectSubset<T, SubscriberFindUniqueArgs<ExtArgs>>): Prisma__SubscriberClient<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends SubscriberFindUniqueArgs>(args: SelectSubset<T, SubscriberFindUniqueArgs<ExtArgs>>): Prisma__SubscriberClient<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one Subscriber that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Subscriber that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {SubscriberFindUniqueOrThrowArgs} args - Arguments to find a Subscriber
      * @example
@@ -1122,7 +1089,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends SubscriberFindUniqueOrThrowArgs>(args: SelectSubset<T, SubscriberFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SubscriberClient<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends SubscriberFindUniqueOrThrowArgs>(args: SelectSubset<T, SubscriberFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SubscriberClient<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first Subscriber that matches the filter.
@@ -1137,7 +1104,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends SubscriberFindFirstArgs>(args?: SelectSubset<T, SubscriberFindFirstArgs<ExtArgs>>): Prisma__SubscriberClient<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends SubscriberFindFirstArgs>(args?: SelectSubset<T, SubscriberFindFirstArgs<ExtArgs>>): Prisma__SubscriberClient<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first Subscriber that matches the filter or
@@ -1153,7 +1120,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends SubscriberFindFirstOrThrowArgs>(args?: SelectSubset<T, SubscriberFindFirstOrThrowArgs<ExtArgs>>): Prisma__SubscriberClient<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends SubscriberFindFirstOrThrowArgs>(args?: SelectSubset<T, SubscriberFindFirstOrThrowArgs<ExtArgs>>): Prisma__SubscriberClient<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more Subscribers that matches the filter.
@@ -1171,7 +1138,7 @@ export namespace Prisma {
      * const subscriberWithIdOnly = await prisma.subscriber.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends SubscriberFindManyArgs>(args?: SelectSubset<T, SubscriberFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends SubscriberFindManyArgs>(args?: SelectSubset<T, SubscriberFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a Subscriber.
@@ -1185,7 +1152,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends SubscriberCreateArgs>(args: SelectSubset<T, SubscriberCreateArgs<ExtArgs>>): Prisma__SubscriberClient<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends SubscriberCreateArgs>(args: SelectSubset<T, SubscriberCreateArgs<ExtArgs>>): Prisma__SubscriberClient<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many Subscribers.
@@ -1213,7 +1180,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many Subscribers and only return the `id`
-     * const subscriberWithIdOnly = await prisma.subscriber.createManyAndReturn({
+     * const subscriberWithIdOnly = await prisma.subscriber.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -1223,7 +1190,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends SubscriberCreateManyAndReturnArgs>(args?: SelectSubset<T, SubscriberCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends SubscriberCreateManyAndReturnArgs>(args?: SelectSubset<T, SubscriberCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a Subscriber.
@@ -1237,7 +1204,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends SubscriberDeleteArgs>(args: SelectSubset<T, SubscriberDeleteArgs<ExtArgs>>): Prisma__SubscriberClient<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends SubscriberDeleteArgs>(args: SelectSubset<T, SubscriberDeleteArgs<ExtArgs>>): Prisma__SubscriberClient<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one Subscriber.
@@ -1254,7 +1221,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends SubscriberUpdateArgs>(args: SelectSubset<T, SubscriberUpdateArgs<ExtArgs>>): Prisma__SubscriberClient<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends SubscriberUpdateArgs>(args: SelectSubset<T, SubscriberUpdateArgs<ExtArgs>>): Prisma__SubscriberClient<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more Subscribers.
@@ -1290,36 +1257,6 @@ export namespace Prisma {
     updateMany<T extends SubscriberUpdateManyArgs>(args: SelectSubset<T, SubscriberUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Subscribers and returns the data updated in the database.
-     * @param {SubscriberUpdateManyAndReturnArgs} args - Arguments to update many Subscribers.
-     * @example
-     * // Update many Subscribers
-     * const subscriber = await prisma.subscriber.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Subscribers and only return the `id`
-     * const subscriberWithIdOnly = await prisma.subscriber.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends SubscriberUpdateManyAndReturnArgs>(args: SelectSubset<T, SubscriberUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one Subscriber.
      * @param {SubscriberUpsertArgs} args - Arguments to update or create a Subscriber.
      * @example
@@ -1336,7 +1273,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends SubscriberUpsertArgs>(args: SelectSubset<T, SubscriberUpsertArgs<ExtArgs>>): Prisma__SubscriberClient<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends SubscriberUpsertArgs>(args: SelectSubset<T, SubscriberUpsertArgs<ExtArgs>>): Prisma__SubscriberClient<$Result.GetResult<Prisma.$SubscriberPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -1476,7 +1413,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__SubscriberClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__SubscriberClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1505,7 +1442,7 @@ export namespace Prisma {
 
   /**
    * Fields of the Subscriber model
-   */
+   */ 
   interface SubscriberFieldRefs {
     readonly id: FieldRef<"Subscriber", 'Int'>
     readonly chatId: FieldRef<"Subscriber", 'BigInt'>
@@ -1523,10 +1460,6 @@ export namespace Prisma {
      */
     select?: SubscriberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Subscriber
-     */
-    omit?: SubscriberOmit<ExtArgs> | null
-    /**
      * Filter, which Subscriber to fetch.
      */
     where: SubscriberWhereUniqueInput
@@ -1541,10 +1474,6 @@ export namespace Prisma {
      */
     select?: SubscriberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Subscriber
-     */
-    omit?: SubscriberOmit<ExtArgs> | null
-    /**
      * Filter, which Subscriber to fetch.
      */
     where: SubscriberWhereUniqueInput
@@ -1558,10 +1487,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Subscriber
      */
     select?: SubscriberSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Subscriber
-     */
-    omit?: SubscriberOmit<ExtArgs> | null
     /**
      * Filter, which Subscriber to fetch.
      */
@@ -1607,10 +1532,6 @@ export namespace Prisma {
      */
     select?: SubscriberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Subscriber
-     */
-    omit?: SubscriberOmit<ExtArgs> | null
-    /**
      * Filter, which Subscriber to fetch.
      */
     where?: SubscriberWhereInput
@@ -1655,10 +1576,6 @@ export namespace Prisma {
      */
     select?: SubscriberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Subscriber
-     */
-    omit?: SubscriberOmit<ExtArgs> | null
-    /**
      * Filter, which Subscribers to fetch.
      */
     where?: SubscriberWhereInput
@@ -1698,10 +1615,6 @@ export namespace Prisma {
      */
     select?: SubscriberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Subscriber
-     */
-    omit?: SubscriberOmit<ExtArgs> | null
-    /**
      * The data needed to create a Subscriber.
      */
     data: XOR<SubscriberCreateInput, SubscriberUncheckedCreateInput>
@@ -1727,10 +1640,6 @@ export namespace Prisma {
      */
     select?: SubscriberSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Subscriber
-     */
-    omit?: SubscriberOmit<ExtArgs> | null
-    /**
      * The data used to create many Subscribers.
      */
     data: SubscriberCreateManyInput | SubscriberCreateManyInput[]
@@ -1745,10 +1654,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Subscriber
      */
     select?: SubscriberSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Subscriber
-     */
-    omit?: SubscriberOmit<ExtArgs> | null
     /**
      * The data needed to update a Subscriber.
      */
@@ -1771,36 +1676,6 @@ export namespace Prisma {
      * Filter which Subscribers to update
      */
     where?: SubscriberWhereInput
-    /**
-     * Limit how many Subscribers to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Subscriber updateManyAndReturn
-   */
-  export type SubscriberUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Subscriber
-     */
-    select?: SubscriberSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Subscriber
-     */
-    omit?: SubscriberOmit<ExtArgs> | null
-    /**
-     * The data used to update Subscribers.
-     */
-    data: XOR<SubscriberUpdateManyMutationInput, SubscriberUncheckedUpdateManyInput>
-    /**
-     * Filter which Subscribers to update
-     */
-    where?: SubscriberWhereInput
-    /**
-     * Limit how many Subscribers to update.
-     */
-    limit?: number
   }
 
   /**
@@ -1811,10 +1686,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Subscriber
      */
     select?: SubscriberSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Subscriber
-     */
-    omit?: SubscriberOmit<ExtArgs> | null
     /**
      * The filter to search for the Subscriber to update in case it exists.
      */
@@ -1838,10 +1709,6 @@ export namespace Prisma {
      */
     select?: SubscriberSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Subscriber
-     */
-    omit?: SubscriberOmit<ExtArgs> | null
-    /**
      * Filter which Subscriber to delete.
      */
     where: SubscriberWhereUniqueInput
@@ -1855,10 +1722,6 @@ export namespace Prisma {
      * Filter which Subscribers to delete
      */
     where?: SubscriberWhereInput
-    /**
-     * Limit how many Subscribers to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -1869,10 +1732,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Subscriber
      */
     select?: SubscriberSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Subscriber
-     */
-    omit?: SubscriberOmit<ExtArgs> | null
   }
 
 
@@ -1908,7 +1767,7 @@ export namespace Prisma {
 
 
   /**
-   * Field references
+   * Field references 
    */
 
 
@@ -2272,6 +2131,14 @@ export namespace Prisma {
   }
 
 
+
+  /**
+   * Aliases for legacy arg types
+   */
+    /**
+     * @deprecated Use SubscriberDefaultArgs instead
+     */
+    export type SubscriberArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SubscriberDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

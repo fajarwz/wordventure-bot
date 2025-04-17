@@ -9,13 +9,16 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^6.6.0",
+    "@prisma/client": "^5.22.0",
     "axios": "^0.27.2",
     "dotenv": "^16.5.0",
     "node-cron": "^3.0.3",
     "node-telegram-bot-api": "^0.58.0",
-    "prisma": "^6.6.0"
+    "prisma": "^5.22.0"
   },
   "author": "fajarwz",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": "16.x"
+  }
 }
