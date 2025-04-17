@@ -1,5 +1,5 @@
 {
-  "name": "wordwhiz-bot",
+  "name": "wordventure-bot",
   "version": "1.0.0",
   "description": "A Telegram bot for daily words and quizzes",
   "main": "src/index.js",
