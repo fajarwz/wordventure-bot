@@ -9,10 +9,12 @@ const options = {
   }
 };
 
-const url = config.app.baseUrl;
+const baseurl = config.app.baseUrl;
 const bot = new TelegramBot(config.botToken, options);
 
-bot.setWebHook(`${url}/bot${botToken}`);
+const url = `${baseurl}/bot${config.botToken}`;
+console.log(`URL: ${url}`);
+bot.setWebHook(url);
 
 // Register bot commands
 registerCommands(bot);
