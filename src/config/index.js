@@ -8,6 +8,9 @@ const config = {
   dictionary: {
     baseApi: process.env.DICTIONARY_BASE_API,
   },
+  app: {
+    baseUrl: process.env.APP_BASE_URL,
+  },
 };
 
 if (!config.botToken) {

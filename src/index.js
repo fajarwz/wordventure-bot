@@ -1,9 +1,18 @@
 const TelegramBot = require('node-telegram-bot-api');
 const { registerCommands } = require('./commands');
 const { startScheduler } = require('./scheduler');
-const { botToken } = require('./config');
+const config = require('./config');
 
-const bot = new TelegramBot(botToken, { polling: true });
+const options = {
+  webHook: {
+    port: 443
+  }
+};
+
+const url = config.app.baseUrl;
+const bot = new TelegramBot(config.botToken, options);
+
+bot.setWebHook(`${url}/bot${botToken}`);
 
 // Register bot commands
 registerCommands(bot);
