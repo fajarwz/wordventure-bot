@@ -4,7 +4,9 @@
   "description": "A Telegram bot for daily words and quizzes",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^6.6.0",
