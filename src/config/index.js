@@ -11,7 +11,7 @@ const config = {
   app: {
     baseUrl: process.env.APP_BASE_URL,
     port: process.env.APP_PORT || 80,
-    useWebhook: process.env.APP_USE_WEBHOOK || true,
+    useWebhook: process.env.APP_USE_WEBHOOK == 'true',
   },
 };
 
