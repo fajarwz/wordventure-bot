@@ -10,6 +10,7 @@ const config = {
   },
   app: {
     baseUrl: process.env.APP_BASE_URL,
+    port: process.env.APP_PORT || 80,
   },
 };
 

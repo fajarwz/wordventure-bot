@@ -73,12 +73,12 @@ Use /quiz to test your vocabulary!`
     const correctData = await fetchWordData(correctWord);
     if (!correctData) return bot.sendMessage(msg.chat.id, 'Error getting quiz word.');
 
-    const choices = [correctData.definition];
+    const choices = [correctData.definitions[0].definition];
     while (choices.length < 4) {
       const otherWord = getRandomWord();
       const data = await fetchWordData(otherWord);
-      if (data && !choices.includes(data.definition)) {
-        choices.push(data.definition);
+      if (data && !choices.includes(data.definitions[0].definition)) {
+        choices.push(data.definitions[0].definition);
       }
     }
 
@@ -88,7 +88,7 @@ Use /quiz to test your vocabulary!`
       .sort(() => 0.5 - Math.random());
 
     // Store answer for comparison later
-    const correctAnswerId = shuffled.find(c => c.definition === correctData.definition).id;
+    const correctAnswerId = shuffled.find(c => c.definition === correctData.definitions[0].definition).id;
 
     // Create inline keyboard buttons
     const inlineKeyboard = shuffled.map((choice) => ([{
@@ -106,7 +106,7 @@ Use /quiz to test your vocabulary!`
       const isCorrect = query.data === correctAnswerId;
 
       bot.sendMessage(query.message.chat.id,
-        `${isCorrect ? '*✅ Correct!*\n\n' : '*❌ Wrong!*\n\n'} *Your answer*: ${selectedChoice.definition}${!isCorrect ? `\n\n*Correct answer*: ${correctData.definition}` : ''}`,
+        `${isCorrect ? '*✅ Correct!*\n\n' : '*❌ Wrong!*\n\n'} *Your answer*: ${selectedChoice.definition}${!isCorrect ? `\n\n*Correct answer*: ${correctData.definitions[0].definition}` : ''}`,
         { parse_mode: 'Markdown' }
       );
     });

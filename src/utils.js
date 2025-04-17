@@ -33,6 +33,7 @@ async function fetchWordData(word) {
       antonyms,
     };
   } catch (err) {
+    console.error(err);
     console.error(`Error fetching data for word "${word}": ${err.message}`);
     return null;
   }
