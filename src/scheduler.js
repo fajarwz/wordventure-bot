@@ -1,10 +1,10 @@
+const config = require('./config');
 const prisma = require('./config/prisma');
 const { fetchWordData, getRandomWord, formatDailyWordMessage } = require('./utils');
 const cron = require('node-cron');
 
 function startScheduler(bot) {
-  // Schedule the job to run every day at 9:00 AM
-  cron.schedule('0 9 * * *', async () => {
+  cron.schedule(config.app.dailyWordSchedule, async () => {
     console.log("Sending daily words to all subscribers...");
     await sendWordToAllSubscribers(bot);
   });

@@ -1,3 +1,4 @@
+const config = require('./config');
 const prisma = require('./config/prisma');
 const { fetchWordData, getRandomWord, formatWordMessage } = require('./utils');
 
@@ -5,7 +6,7 @@ function registerCommands(bot) {
   bot.onText(/\/(start|help)/, (msg) => {
     bot.sendMessage(
       msg.chat.id,
-      `Welcome to WordWhiz!
+      `Welcome to ${config.botName}!
 Use /subscribe to get a new word every day.
 Use /word to get a random word now.
 Use /quiz to test your vocabulary!`
