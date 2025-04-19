@@ -1,4 +1,3 @@
-const http = require('http');
 const TelegramBot = require('node-telegram-bot-api');
 const { registerCommands } = require('./commands');
 const { startScheduler } = require('./scheduler');

@@ -19,10 +19,8 @@ async function fetchWordData(word) {
     const res = await axios.get(`${config.dictionary.baseApi}/v2/entries/en/${word}`);
     const data = res.data[0];
 
-    // Map all definitions from the first meaning into an array
     const definitions = data.meanings[0]?.definitions;
 
-    // Get synonyms and antonyms from the first definition
     const synonyms = data.meanings[0]?.synonyms || [];
     const antonyms = data.meanings[0]?.antonyms || [];
 
